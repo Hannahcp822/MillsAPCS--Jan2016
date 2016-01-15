@@ -9,6 +9,9 @@ package activity3;
  *    
  * @author Laurie White
  * @version April 2012
+ * 
+ * Modified by Hannah Pang
+ * January 14, 2016
  */
 public class Magpie3
 {
@@ -23,36 +26,57 @@ public class Magpie3
 	}
 
 	/**
-	 * Gives a response to a user statement
-	 * 
-	 * @param statement
-	 *            the user statement
-	 * @return a response based on the rules given
-	 */
-	public String getResponse(String statement)
-	{
-		String response = "";
-		if (statement.length() == 0)
-		{
-			response = "Say something, please.";
-		}
-		else if (findKeyword(statement, "no") >= 0)
-		{
-			response = "Why so negative?";
-		}
-		else if (findKeyword(statement, "mother") >= 0
-				|| findKeyword(statement, "father") >= 0
-				|| findKeyword(statement, "sister") >= 0
-				|| findKeyword(statement, "brother") >= 0)
-		{
-			response = "Tell me more about your family.";
-		}
-		else
-		{
-			response = getRandomResponse();
-		}
-		return response;
-	}
+     * Gives a response to a user statement
+     * 
+     * @param statement
+     *            the user statement
+     * @return a response based on the rules given
+     */
+    public String getResponse(String statement)
+    {
+        String response = "";
+        if (findKeyword(statement,"no") >= 0)
+        {
+            response = "Why so negative?";
+        }
+        else if (findKeyword(statement,"mother") >= 0
+                || findKeyword(statement,"father") >= 0
+                || findKeyword(statement,"sister") >= 0
+                || findKeyword(statement,"brother") >= 0)
+        {
+            response = "Tell me more about your family.";
+        }
+        else if (findKeyword(statement,"dog") >= 0
+                || findKeyword(statement,"cat") >= 0)
+        {
+            response = "Tell me more about your pets.";
+        }
+        else if (findKeyword(statement,"Ms. Dreyer") >= 0)
+        {
+            response = "She sounds like a good teacher.";
+        }
+        else if (findKeyword(statement,"school") >= 0)
+        {
+            response = "Tell me about your favorite subjects.";
+        }
+        else if (findKeyword(statement,"friend") >= 0)
+        {
+            response = "Tell me more about your friends.";
+        }
+        else if (findKeyword(statement,"today") >= 0)
+        {
+            response = "Tell me more about your day.";
+        }
+        else if (statement.trim().length() == 0)
+        {
+            response = "Say something, please.";
+        }
+        else
+        {
+            response = getRandomResponse();
+        }
+        return response;
+    }
 
 	/**
 	 * Search for one word in phrase. The search is not case
@@ -138,35 +162,41 @@ public class Magpie3
 	}
 
 	/**
-	 * Pick a default response to use if nothing else fits.
-	 * 
-	 * @return a non-committal string
-	 */
-	private String getRandomResponse()
-	{
-		final int NUMBER_OF_RESPONSES = 4;
-		double r = Math.random();
-		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
-		String response = "";
+     * Pick a default response to use if nothing else fits.
+     * @return a non-committal string
+     */
+    private String getRandomResponse()
+    {
+        final int NUMBER_OF_RESPONSES = 6;
+        double r = Math.random();
+        int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
+        String response = "";
+        
+        if (whichResponse == 0)
+        {
+            response = "Interesting, tell me more.";
+        }
+        else if (whichResponse == 1)
+        {
+            response = "Hmmm.";
+        }
+        else if (whichResponse == 2)
+        {
+            response = "Do you really think so?";
+        }
+        else if (whichResponse == 3)
+        {
+            response = "You don't say.";
+        }
+        else if (whichResponse == 4)
+        {
+            response = "How fascinating.";
+        }
+        else if (whichResponse == 5)
+        {
+            response = "That is quite interesting.";
+        }
 
-		if (whichResponse == 0)
-		{
-			response = "Interesting, tell me more.";
-		}
-		else if (whichResponse == 1)
-		{
-			response = "Hmmm.";
-		}
-		else if (whichResponse == 2)
-		{
-			response = "Do you really think so?";
-		}
-		else if (whichResponse == 3)
-		{
-			response = "You don't say.";
-		}
-
-		return response;
-	}
-
+        return response;
+    }
 }
