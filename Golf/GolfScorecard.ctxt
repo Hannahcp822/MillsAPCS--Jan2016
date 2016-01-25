@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=holeNumberInput\ parInput\ actualInput
+comment0.target=GolfScorecard(int,\ int,\ int)
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ GolfScorecard\n
+comment1.params=current
+comment1.target=void\ add(GolfScorecard)
+comment2.params=
+comment2.target=java.lang.String\ score()
+comment3.params=
+comment3.target=java.lang.String\ finalScore()
+numComments=4

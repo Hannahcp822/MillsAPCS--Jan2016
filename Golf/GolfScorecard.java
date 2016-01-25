@@ -1,44 +1,70 @@
 
 /**
- * Write a description of class GolfScorecard here.
+ * Blueprint for "GolfScorecard" object
  * 
  * @author Hannah Pang
- * @version January 22, 2016
+ * @version January 24, 2016
  */
+
+import java.util.*;
+
 public class GolfScorecard
 {
     // instance variables 
-    int cumulativePar;
-    int cumulativeScore;
+    int holeNumber;
+    int par;
+    int actual;
+    int cumulativePar = 0;
+    int cumulativeActual = 0;
 
     /**
      * Constructor for objects of class GolfScorecard
      */
-    public GolfScorecard(int par1, int score1,
-                         int par2, int score2,
-                         int par3, int score3,
-                         int par4, int score4)
+    
+    public GolfScorecard(int holeNumberInput, int parInput, int actualInput)
     {
-        // initialise instance variables
-        cumulativePar = par1 + par2 + par3 + par4;
-        cumulativeScore = score1 + score2 + score3 + score4;
+        holeNumber = holeNumberInput;
+        par = parInput;
+        actual = actualInput;
     }
-
-    /**
-     * An example of a method - 
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public void name(int holeNumber, int par, int score)
+    
+    // parameter: current hole being analyzed
+    // adds par and actual score from the current hole to the cumulative totals
+    public void add(GolfScorecard current) 
     {
-        int difference = par - score;
-        String name = holeNumber + ". ";
-        if (difference > 0) {
-            
-        } else if (difference < 0) {
-            
+        cumulativePar += current.par;
+        cumulativeActual += current.actual;
+    }
+    
+    // returns name of hole (birdie, bogey, etc) based on player's actual score compared to par
+    public String score()
+    {
+        int difference = par - actual;
+        
+        if (difference == -2) {
+            return holeNumber + ". double bogey";
+        } else if (difference == -1) {
+            return holeNumber + ". bogey";
+        } else if (difference == 1) {
+            return holeNumber + ". birdie";
+        } else if (difference == 2) {
+            return holeNumber + ". eagle";
         } else {
-            name += "Par";
+            return holeNumber + ". par";
+        }
+    }
+    
+    // returns final result (amt over/below par) based on player's actual cumulative score compared to cumulative par
+    public String finalScore()
+    {
+        int finalDifference = cumulativePar - cumulativeActual;
+        
+        if (finalDifference > 0) {
+            return finalDifference + " below par";
+        } else if (finalDifference < 0) {
+            return Math.abs(finalDifference) + " over par";
+        } else {
+            return "Par";
+        }
     }
 }
