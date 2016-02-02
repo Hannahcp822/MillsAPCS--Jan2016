@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Game()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Game\n
+comment1.params=console
+comment1.target=void\ play(java.util.Scanner)
+comment10.params=player
+comment10.target=void\ displayPosition(int)
+comment11.params=player
+comment11.target=java.lang.String\ playerName(int)
+comment2.params=player\ roll
+comment2.target=boolean\ move(int,\ int)
+comment3.params=
+comment3.target=int\ nextRoll()
+comment4.params=player
+comment4.target=boolean\ isPlayerAtEnd(int)
+comment5.params=roll
+comment5.target=boolean\ shouldMoveBack(int)
+comment6.params=player\ roll
+comment6.target=void\ moveBack(int,\ int)
+comment7.params=
+comment7.target=boolean\ occupied()
+comment8.params=player
+comment8.target=void\ returnToStart(int)
+comment9.params=
+comment9.target=void\ printOutput()
+numComments=12
